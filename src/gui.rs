@@ -4,7 +4,7 @@ use native_windows_gui::*;
 #[derive(NwgUi, Default)]
 pub struct PortalTools {
     // layout and window
-    #[nwg_control(flags: "WINDOW|VISIBLE", size: (420, 200))]
+    #[nwg_control(flags: "WINDOW|VISIBLE", size: (420, 200), title: "Portal Tools")]
     pub window: Window,
 
     #[nwg_layout(parent: window, spacing: 2)]

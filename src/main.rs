@@ -1,3 +1,4 @@
+#![windows_subsystem = "windows"]
 mod gui;
 
 use native_windows_gui as nwg;
