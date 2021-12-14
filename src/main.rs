@@ -4,9 +4,8 @@ mod gui;
 use native_windows_gui as nwg;
 use nwg::NativeUi;
 
-use image::{DynamicImage, Rgba, GenericImageView, GenericImage, Pixel, Rgb};
+use image::{DynamicImage, Rgba, GenericImageView, Pixel, Rgb};
 use std::path::{Path, PathBuf};
-use std::convert::TryInto;
 
 fn multiply_image_to_vtf(base: DynamicImage, c: &Rgba<u8>) -> Vec<u8> {
     let result = image::DynamicImage::ImageRgba8(imageproc::map::map_colors(
@@ -45,11 +44,11 @@ impl gui::PortalTools {
         if self.steampipe() {
             // create steampipe custom folders :vomit:
             std::fs::create_dir_all(
-                PathBuf::from(format!("{}/portal/custom/portal_tools/materials/models/v_models/v_portalgun", base))
+                PathBuf::from(format!("{}/portal/custom/portal_tools/materials/models/weapons/v_models/v_portalgun", base))
             ).map_err(|e| e.to_string());
 
             std::fs::create_dir_all(
-                PathBuf::from(format!("{}/portal/custom/portal_tools/materials/models/w_models/portalgun", base))
+                PathBuf::from(format!("{}/portal/custom/portal_tools/materials/models/weapons/w_models/portalgun", base))
             ).map_err(|e| e.to_string());
 
             std::fs::create_dir_all(
@@ -58,6 +57,10 @@ impl gui::PortalTools {
 
             std::fs::create_dir_all(
                 PathBuf::from(format!("{}/portal/custom/portal_tools/materials/sprites", base))
+            ).map_err(|e| e.to_string());
+
+            std::fs::create_dir_all(
+                PathBuf::from(format!("{}/portal/custom/portal_tools/particles", base))
             ).map_err(|e| e.to_string());
         }
 
@@ -321,7 +324,7 @@ impl gui::PortalTools {
     }
 
     fn steampipe(&self) -> bool {
-        Path::new(&format!("{}/portal/portal_vpk_dir.vpk", &self.game_box.text()))
+        Path::new(&format!("{}/portal/portal_pak_dir.vpk", &self.game_box.text()))
             .exists()
     }
 

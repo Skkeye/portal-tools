@@ -135,7 +135,7 @@ impl PortalTools {
         if self.picker.run(Some(&self.window)) {
             let c = self.picker.color();
             self.gun_box
-                .set_text(&format!("{:2x}{:2x}{:2x}", c[0], c[1], c[2]));
+                .set_text(&format!("{:02x}{:02x}{:02x}", c[0], c[1], c[2]));
         }
     }
     fn pick_game(&self) {
